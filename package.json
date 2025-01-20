@@ -1,0 +1,24 @@
+{
+  "name": "project1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "allureTest": "npx playwright test tests/clientApp.spec.js --headed --reporter=line,allure-playwright",
+    "POTest": "npx playwright test tests/clientAppPO.spec.js --headed",
+    "ClientTest": "npx playwright test tests/clientApp.spec.js --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.48.2",
+    "@types/node": "^22.8.1",
+    "allure-playwright": "^3.0.8",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  }
+}

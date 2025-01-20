@@ -1,0 +1,9 @@
+[
+  'IPHONE 13 PRO',
+  'qwerty',
+  'Banarsi Saree',
+  'LG Refrigerator',
+  'LG Refrigerator',
+  'qwerty'
+]
+ | 678771aae2b5443b1f2437bf | 
