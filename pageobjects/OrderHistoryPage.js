@@ -1,3 +1,9 @@
+const{test, expect} = require('@playwright/test')
+//const{stepDefination} = require('../../step_Definations/steps')
+const {OrderReviewPage} = require('../pageobjects/OrderReviewPage')
+
+
+
 class OrderHistoryPage{
 
     constructor(page){
@@ -6,7 +12,6 @@ class OrderHistoryPage{
         this.ordeTable = page.locator('tbody')
         this.rows = page.locator('tbody tr')
         this.OrderIdDetails = page.locator('.col-text')
-
     }
 
 
@@ -27,7 +32,9 @@ class OrderHistoryPage{
 
     async getOrderId(){
 
-        await this.OrderIdDetails.textContent();
+       const orderIdOnHistory = await this.OrderIdDetails.textContent();
+       console.log('orderIdOnHistory:'+ orderIdOnHistory)
+       return orderIdOnHistory;
        
     }
 

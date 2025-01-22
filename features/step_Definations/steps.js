@@ -4,6 +4,7 @@ const {POManager} = require('../../pageobjects/POManager');
 const playwright = require('@playwright/test')
 
 
+
 Given('a login to Ecommerce application with {string} and {string}',{timeout : 100*1000},  async function (username, password) {
     const browser = await playwright.chromium.launch({
       headless: false
@@ -26,23 +27,23 @@ Given('a login to Ecommerce application with {string} and {string}',{timeout : 1
   });
 
   Then('Verify {string} is displayed in the cart', async function (productName) {
-    const checkoutPage = this.pomanager.getCheckoutPage();
-    await checkoutPage.VerifyProductIsDisplayed(productName);
-    await checkoutPage.Checkout()
+    this.checkoutPage = this.pomanager.getCheckoutPage();
+    await this.checkoutPage.VerifyProductIsDisplayed(productName);
+    await this.checkoutPage.Checkout()
   });
 
-  When('Enter valid details and place order', async function () {
-    const orderReviewPage = this.pomanager.getOrderReviewPage();
-    await checkoutPage.searchCountryandSelect("ind", "India")
-    await checkoutPage.VerifyEmailandSubmit(username)
-   const orderId = await orderReviewPage.getOrderId();
-    console.log(orderId);
+  When('Enter valid details with {string} and place order',{timeout : 100*1000}, async function (emailID) {
+    this.orderReviewPage = this.pomanager.getOrderReviewPage();
+    await this.checkoutPage.searchCountryandSelect("ind", "India")
+    await this.checkoutPage.VerifyEmailandSubmit(emailID)
+    this.orderId = await this.orderReviewPage.getOrderId();
+    //console.log('orderid2:'+ this.orderId);
   });
 
   Then('Verify order is present on order history page', async function () {
     await this.dashboardPage.navigateToDashboard();
-    const orderHistoryPage =this.pomanager.getOrderHistoryPage();
-    await orderHistoryPage.searchOrderAndSelect(orderId);
-    expect(orderId.includes(await orderHistoryPage.getOrderId())).toBeTruthy();
-    await orderHistoryPage.getOrderId()
+    this.orderHistoryPage =this.pomanager.getOrderHistoryPage();
+    await this.orderHistoryPage.searchOrderAndSelect(this.orderId);
+    await expect(this.orderId.includes(await this.orderHistoryPage.getOrderId())).toBeTruthy();
+    //await this.orderHistoryPage.getOrderId()
   });
