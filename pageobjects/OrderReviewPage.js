@@ -6,8 +6,6 @@ constructor(page){
 
     this.textMessage = page.locator('h1.hero-primary')
     this.orderId = page.locator('.em-spacer-1 .ng-star-inserted')
-
-
 }
 
 async getOrderId(){ 
@@ -17,8 +15,6 @@ async getOrderId(){
     console.log('orderidOnDetails: '+productOrderidOnDetails[2])
     return productOrderidOnDetails[2];
 }
-
-
 
 }
 
