@@ -6,13 +6,7 @@ const playwright = require('@playwright/test')
 
 
 Given('a login to Ecommerce application with {string} and {string}',{timeout : 100*1000},  async function (username, password) {
-    const browser = await playwright.chromium.launch({
-      headless: false
-    })
-    const context = await browser.newContext()
-    const page = await context.newPage()
-    
-    this.pomanager = new POManager(page)
+   
     const loginPage = this.pomanager.getLoginPage();
     await loginPage.goTo()
     await loginPage.validLogin(username, password)
