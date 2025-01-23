@@ -13,7 +13,7 @@ Before(async function () {
         this.pomanager = new POManager(this.page)
   });
 
-  After(function () {
+  After({tags: '@Regression'}, function () {
     // Assuming this.driver is a selenium webdriver
     console.log('All the automation is complated')
   });
