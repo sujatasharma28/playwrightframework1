@@ -1,5 +1,6 @@
 Feature: Ecommerce validation
 
+@Regression
   Scenario: playcing the order
     Given a login to Ecommerce application with "sujatasharma1690@gmail.com" and "@Sujata28"
     When Add "IPHONE 13 PRO" to cart
