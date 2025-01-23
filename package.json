@@ -5,7 +5,8 @@
   "scripts": {
     "allureTest": "npx playwright test tests/clientApp.spec.js --headed --reporter=line,allure-playwright",
     "POTest": "npx playwright test tests/clientAppPO.spec.js --headed",
-    "ClientTest": "npx playwright test tests/clientApp.spec.js --headed"
+    "ClientTest": "npx playwright test tests/clientApp.spec.js --headed",
+    "CucumberRegression": "npx cucumber-js features/Ecommerce.feature --parallel 2 --exit --format html:cucumber-report.html"
   },
   "keywords": [],
   "author": "",
